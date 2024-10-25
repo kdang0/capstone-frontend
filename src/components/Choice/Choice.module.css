@@ -1,0 +1,7 @@
+.panel{
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+}
+.panel:hover{
+    background-color: red;
+}
