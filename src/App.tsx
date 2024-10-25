@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import {Assignment} from './components/Assignment/Assignment';
+import {Assignment} from './pages/Assignment/Assignment';
 import { getAssignment } from './services/dac-api';
 type Assignment = { 
   questions: Question[],

@@ -1,5 +1,5 @@
 import React from 'react'
-import {Question} from '../Question/Question';
+import {Question} from '../../components/Question/Question';
 
 
 type Assignment = { 
