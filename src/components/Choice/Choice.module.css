@@ -5,3 +5,7 @@
 .panel:hover{
     background-color: red;
 }
+
+.clicked { 
+    background-color: red;
+}

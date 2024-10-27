@@ -1,12 +1,21 @@
 // import React from 'react'
 import styles from './Choice.module.css';
 
-export const Choice = ({value} : {value : string}) => {
+interface ChoiceProps{
+  onChoiceClicked : (choice : string) => void
+  value: string,
+  clicked: boolean
+}
+
+export const Choice = ({value, onChoiceClicked, clicked} : ChoiceProps) => {
+  
+  const handleClick = () => {
+    onChoiceClicked(value);
+  }
+  
   return (
-    <div>
-      <div className={styles.panel}>
+    <div className={`${styles.panel} ${clicked ? styles.clicked : ''}`} onClick={handleClick}>
         <p>{value}</p>
-      </div>
     </div>
   )
 }

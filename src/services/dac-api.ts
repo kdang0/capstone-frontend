@@ -1,3 +1,4 @@
+
 interface Assignment {
     tutorId: string, 
     questions: {
@@ -13,11 +14,14 @@ interface Assignment {
     totalPoints: number
 }
 
+
+
 const url = `http://localhost:4000`;
 
-export const getAssignment = async () : Promise<Assignment> => {
-    const res = await fetch(`${url}/assignment/671bee9af9fd9c3650eb5500`);
+export const getAssignment = async (id : string) : Promise<Assignment> => {
+    const res = await fetch(`${url}/assignment/${id}`);
     const data : Assignment = await res.json();
     console.log(data);
     return data;
 }
+
