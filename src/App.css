@@ -7,3 +7,7 @@
 .displayFlex{
   display: flex;
 }
+
+.flexColumn{
+  flex-direction: column;
+}

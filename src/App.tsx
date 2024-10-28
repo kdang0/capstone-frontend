@@ -11,6 +11,7 @@ import { Student } from "./pages/Student";
 import { StudentList } from "./pages/StudentList";
 import { AuthProvider } from "./context/AuthProvider";
 import { ProtectedRoute } from "./components/ProtectedRoute";
+import { AssignmentCreate } from "./pages/AssignmentCreate";
 import Navbar from "./components/Navbar/Navbar";
 
 function App() {
@@ -32,6 +33,11 @@ function App() {
                   <AssignmentList />
               </ProtectedRoute>
             } />
+            <Route path="/assignment/create" element={
+              <ProtectedRoute allowedRoles={['tutor']}>
+                <AssignmentCreate/>
+              </ProtectedRoute>
+            }/>
             <Route
               path="/class"
               element={

@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { useAuth } from "../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 type User = {
   _id: string;
@@ -15,7 +16,14 @@ axios.defaults.withCredentials = true;
 export const Login = () => {
   const [userName, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const { login } = useAuth();
+  const { login, user } = useAuth();
+  const navigate = useNavigate();
+  useEffect(() => {
+    if(user){
+        navigate('/class');
+    };
+  },[user,navigate]);
+  
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     const res = await axios.post("http://localhost:4000/login", {
@@ -31,6 +39,8 @@ export const Login = () => {
       alert(data);
     }
   };
+
+
   return (
     <form onSubmit={handleLogin}>
       <label htmlFor="username">Username:</label>
