@@ -25,6 +25,10 @@ export const AssignmentList = () => {
     fetchAssignments();
   }, [user]);
 
+  const deleteAssignment = async (assignmentId: string) => {
+    setAssignments((prevAssignment) => prevAssignment.filter((assignment) => assignment._id !== assignmentId)); 
+    await axios.delete(`http://localhost:4000/assignment/${assignmentId}`)
+  }
 
   return (
     <div>
@@ -38,7 +42,7 @@ export const AssignmentList = () => {
       }
       {
         user ? 
-        assignments.map((assignment) => <AssignmentCard key={assignment._id} name={assignment.name} description={assignment.description} role={user.role}/>) : <></>
+        assignments.map((assignment) => <AssignmentCard key={assignment._id} name={assignment.name} description={assignment.description} role={user.role} id={assignment._id} handleOnClick={deleteAssignment}/>) : <></>
       }
     </div>
   )

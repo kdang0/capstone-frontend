@@ -13,6 +13,7 @@ import { AuthProvider } from "./context/AuthProvider";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { AssignmentCreate } from "./pages/AssignmentCreate";
 import Navbar from "./components/Navbar/Navbar";
+import { AssignmentEdit } from "./pages/AssignmentEdit";
 
 function App() {
   return (
@@ -36,6 +37,11 @@ function App() {
             <Route path="/assignment/create" element={
               <ProtectedRoute allowedRoles={['tutor']}>
                 <AssignmentCreate/>
+              </ProtectedRoute>
+            }/>
+            <Route path="/assignment/edit/:id" element={
+              <ProtectedRoute allowedRoles={['tutor']}>
+                  <AssignmentEdit/>
               </ProtectedRoute>
             }/>
             <Route

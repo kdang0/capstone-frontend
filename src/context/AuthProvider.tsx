@@ -38,7 +38,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     fetchUser();
   }, []);
   const navigate = useNavigate();
-
+  
   const login = (data: User) => {
     setUser(data);
     navigate("/class");
