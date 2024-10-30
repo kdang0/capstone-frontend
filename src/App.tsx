@@ -14,6 +14,7 @@ import { ProtectedRoute } from "./components/ProtectedRoute";
 import { AssignmentCreate } from "./pages/AssignmentCreate";
 import Navbar from "./components/Navbar/Navbar";
 import { AssignmentEdit } from "./pages/AssignmentEdit";
+import { AssignmentDisplay } from "./pages/AssignmentDisplay";
 
 function App() {
   return (
@@ -24,11 +25,16 @@ function App() {
           <Navbar/>
           <Routes>
             <Route path="/" element={<Login />} />
-            <Route path="/assignment/:id" element={
-              <ProtectedRoute allowedRoles={['student', 'tutor']}>
-                <Assignment />
+            <Route path="/assignment/view/:id" element={
+              <ProtectedRoute allowedRoles={['tutor']}>
+                <AssignmentDisplay />
               </ProtectedRoute>
             } />
+            <Route path="/class/:classId/assignment/:assignmentId" element={
+              <ProtectedRoute>
+                <Assignment/>
+              </ProtectedRoute>
+            }/>
             <Route path="/assignment" element={
               <ProtectedRoute allowedRoles={['student','tutor']}>
                   <AssignmentList />

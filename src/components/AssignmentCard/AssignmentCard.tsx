@@ -5,6 +5,7 @@ interface AssignmentCardProp {
   role: string;
   id: string;
   handleOnClick: (id: string) => void;
+  classId: string;
 }
 
 export default function AssignmentCard({
@@ -12,7 +13,8 @@ export default function AssignmentCard({
   description,
   role,
   id,
-  handleOnClick
+  handleOnClick,
+  classId
 }: AssignmentCardProp) {
 
   const handleDelete = (assignmentId: string) => {
@@ -36,6 +38,9 @@ export default function AssignmentCard({
           <div>
             <p>{name}</p>
             <p>{description}</p>
+            <Link to={`/class/${classId}/assignment/${id}`}>
+              <button>start</button>
+            </Link>
           </div>
         </div>
       )}

@@ -8,7 +8,8 @@ axios.defaults.withCredentials = true;
 interface Assignment{
   _id: string,
   name: string,
-  description: string
+  description: string,
+  classId: string
 }
 
 export const AssignmentList = () => {
@@ -42,7 +43,7 @@ export const AssignmentList = () => {
       }
       {
         user ? 
-        assignments.map((assignment) => <AssignmentCard key={assignment._id} name={assignment.name} description={assignment.description} role={user.role} id={assignment._id} handleOnClick={deleteAssignment}/>) : <></>
+        assignments.map((assignment) => <AssignmentCard key={assignment._id} name={assignment.name} description={assignment.description} role={user.role} id={assignment._id} handleOnClick={deleteAssignment} classId={assignment.classId}/>) : <></>
       }
     </div>
   )
