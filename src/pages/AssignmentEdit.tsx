@@ -70,7 +70,8 @@ export const AssignmentEdit = () => {
     }
 
     return (
-    <div>
+    <div className="displayFlex flexColumn alignItemsCenter container">
+        <h1>Edit Assignment</h1>
         <AssignmentForm assignmentItem={assignment} classes={classes} createAssignment={updateAssignment} formType="edit"/>
     </div>
   )

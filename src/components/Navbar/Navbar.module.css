@@ -1,4 +1,40 @@
 .container{
     display: flex;
     flex-direction: column;
+    background-color: #20211A;
+    height: 100%;
+    padding-right: 0.5rem;
+    gap: 15px;
+}
+
+.container a{
+    text-decoration:  none;
+    color:#FFFF;
+    transition: color 0.2s ease-in;
+    padding-left: 2rem;
+}
+
+.container h1{
+    color:#FFFF;
+    padding:1rem;
+}
+
+.container a:hover{
+    border-left: 4px solid #FFFF;
+    color:#ffffff80
+}
+
+
+.logout{
+    background-color: #FFFF;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    margin-left: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in;
+}
+
+.logout:hover{
+    background-color: #ffffff80;
 }

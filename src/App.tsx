@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { Assignment } from "./pages/Assignment";
+import { Assignment } from "./pages/Assignment/Assignment";
 import { Login } from "./pages/Login";
 import "./App.css";
 import { AssignmentList } from "./pages/AssignmentList";
@@ -19,9 +19,16 @@ import { AssignmentDisplay } from "./pages/AssignmentDisplay";
 function App() {
   return (
     <>
-      <h1>Capstone</h1>
+      {/*
+       * ==================================
+       * | Authentication + Authorization |
+       * ==================================
+       * AuthProvider is a context provider that checks to see if there is an authenticated user and if so provide information regarding the authenticated user
+       * 
+       * ProtectedRoute component uses the context provided by AuthProvider to check if the user is authenticated and authorized by role. If the user is either not authenticated or authorized, then it sends them back to the login page 
+      */}
       <AuthProvider>
-        <div className="displayFlex">
+        <div className="displayFlex appContainer">
           <Navbar/>
           <Routes>
             <Route path="/" element={<Login />} />
@@ -75,11 +82,11 @@ function App() {
               } />
             <Route path="/student" element={
               <ProtectedRoute allowedRoles={['tutor']}>
-                <Student />
+                <StudentList />
               </ProtectedRoute>} />
             <Route path="/student/:id" element={
               <ProtectedRoute allowedRoles={['tutor']}>
-                <StudentList />
+                <Student />
               </ProtectedRoute>
               } />
           </Routes>

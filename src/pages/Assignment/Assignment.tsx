@@ -1,11 +1,12 @@
 import {useState, useEffect} from 'react'
-import {Question} from '../components/Question/Question';
-import { getAssignment } from '../services/dac-api';
-import {useParams} from 'react-router-dom';
+import {Question} from '../../components/Question/Question';
+import { getAssignment } from '../../services/dac-api';
+import {useParams, useNavigate} from 'react-router-dom';
 import axios from 'axios';
-import { useAuth } from '../hooks/useAuth';
+import { useAuth } from '../../hooks/useAuth';
+import styles from './Assignment.module.css';
 
-
+//REMINDER TO STORE THESE TYPES AND INTERFACES IN ANOTHER FILE TO REDUCE REDUNDANCY
 type Assignment = { 
     questions: Question[],
     description: string,
@@ -19,6 +20,7 @@ type Question = {
 }
 
 export const Assignment = () => {
+  const navigate = useNavigate();
   const {user} = useAuth();
   const params = useParams();
   const [assignment, setAssignment] = useState<Assignment | null>(null);
@@ -53,19 +55,23 @@ export const Assignment = () => {
     submission['classId'] = params.classId;
     submission['assignmentId'] = params.assignmentId;
     if(user) submission['id'] = user._id;
-    await axios.patch(`http://localhost:4000/assignment/submit`, submission);
-
+    const res = await axios.patch(`http://localhost:4000/assignment/submit`, submission);
+    if(res.status === 201){
+      navigate('/assignment');
+    }
   }
   return (
     <>
         {
             assignment ? 
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className={`${styles.container}`}>
                 <h1>{assignment.name}</h1>
                 <p>{assignment.description}</p>
-                {
-                    assignment.questions.map((question) => <Question key={question._id} problem={question.problem} choices={question.choices} handleSelect={handleSelection} id={question._id}/>)
-                }
+                <div>
+                  {
+                      assignment.questions.map((question) => <Question key={question._id} problem={question.problem} choices={question.choices} handleSelect={handleSelection} id={question._id}/>)
+                  }
+                </div>
                 <button type="submit">Submit</button>
             </form> : <>Loading...</>
         }

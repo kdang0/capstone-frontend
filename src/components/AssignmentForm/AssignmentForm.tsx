@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { QuestionForm } from "../QuestionForm/QuestionForm";
+import styles from './AssignmentForm.module.css';
+
 
 type Assignment = {
   name: string;
@@ -105,7 +107,7 @@ export default function AssignmentForm({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="displayFlex flexColumn">
+    <form onSubmit={handleSubmit} className={`displayFlex flexColumn`}>
       <div>
         <label>Name:</label>
         <input
@@ -135,7 +137,7 @@ export default function AssignmentForm({
         />
       </div>
       <div>
-        <label>Select Class</label>
+        <label>Select Class:</label>
         <select name="classId" onChange={modifyAssignment}>
           {classes.map((classInst) => (
             <option key={classInst._id} value={classInst._id}>
@@ -153,7 +155,9 @@ export default function AssignmentForm({
           questionItem={question}
         />
       ))}
-      <button type="submit">Submit</button>
+      <div className={`${styles.container}`}>
+        <button type="submit">{formType === "edit" ? 'Save' : 'Create'}</button>
+      </div>
     </form>
   );
 }

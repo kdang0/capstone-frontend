@@ -80,7 +80,8 @@ export const AssignmentCreate = () => {
   };
 
   return (
-    <div>
+    <div className="displayFlex flexColumn alignItemsCenter container">
+      <h1>Create Assignment</h1>
       <button onClick={addButton}>add question</button>
       <AssignmentForm
         assignmentItem={assignment}

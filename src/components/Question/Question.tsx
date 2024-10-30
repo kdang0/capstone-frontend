@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import {Choice} from '../Choice/Choice';
+import styles from './Question.module.css';
 interface QuestionProps{
     problem : string;
     choices: string[];
@@ -14,7 +15,7 @@ export const Question = ({problem, choices, handleSelect, id} : QuestionProps) =
     setSelectedChoice(choice);
   }
   return (
-    <div>
+    <div className={`${styles.container}`}>
         <h1>{problem}</h1>
         {
             choices.map((choice) => <Choice key={choice} value={choice} onChoiceClicked={handleChoiceClick} clicked={selectedChoice === choice}/>)

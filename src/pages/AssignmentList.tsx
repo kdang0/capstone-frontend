@@ -26,13 +26,17 @@ export const AssignmentList = () => {
     fetchAssignments();
   }, [user]);
 
-  const deleteAssignment = async (assignmentId: string) => {
-    setAssignments((prevAssignment) => prevAssignment.filter((assignment) => assignment._id !== assignmentId)); 
-    await axios.delete(`http://localhost:4000/assignment/${assignmentId}`)
+  const handleAssignment = async (assignmentId: string, type: string) => {
+    if(type === "delete"){
+      setAssignments((prevAssignment) => prevAssignment.filter((assignment) => assignment._id !== assignmentId)); 
+      await axios.delete(`http://localhost:4000/assignment/${assignmentId}`);
+    } else if(type==="publish"){
+      await axios.post(`http://localhost:4000/assignment/access/${assignmentId}`);
+    }
   }
 
   return (
-    <div>
+    <div className='displayFlex flexColumn alignItemsCenter container gap10 padding15'>
       {
         user && user.role == 'tutor' ? 
         <Link to='/assignment/create'>
@@ -43,7 +47,7 @@ export const AssignmentList = () => {
       }
       {
         user ? 
-        assignments.map((assignment) => <AssignmentCard key={assignment._id} name={assignment.name} description={assignment.description} role={user.role} id={assignment._id} handleOnClick={deleteAssignment} classId={assignment.classId}/>) : <></>
+        assignments.map((assignment) => <AssignmentCard key={assignment._id} name={assignment.name} role={user.role} id={assignment._id} handleOnClick={handleAssignment} classId={assignment.classId}/>) : <></>
       }
     </div>
   )

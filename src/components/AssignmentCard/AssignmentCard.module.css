@@ -1,0 +1,41 @@
+.container{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 30vw;
+    border: 1px solid #20211A;
+    box-shadow: 10px 5px #20211A;
+    padding:1rem;
+    border-radius: 5px;
+}
+
+.description{
+    font-size: 0.8rem;
+}
+
+.name{
+    font-size: 1.2rem;
+    text-wrap: nowrap;
+}
+
+
+.button{
+    background-color: #20211A;
+    text-decoration: none;
+    color:#FFFF;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.2s ease-in;
+    border:none;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.button:hover{
+    background-color: #20211ac2;
+}
+
+.buttonContainer{
+    display:flex;
+    gap:10px;
+}
