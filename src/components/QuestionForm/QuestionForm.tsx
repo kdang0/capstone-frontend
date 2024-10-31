@@ -18,11 +18,14 @@ type Question = {
   choices: string[];
 };
 
+
 export const QuestionForm = ({
   passQuestionData,
   id,
   questionItem,
 }: QuestionFormProps) => {
+
+  
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     passQuestionData(name, value, id);

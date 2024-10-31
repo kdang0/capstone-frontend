@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import { Assignment } from "./pages/Assignment/Assignment";
 import { Login } from "./pages/Login";
 import "./App.css";
-import { AssignmentList } from "./pages/AssignmentList";
+import { AssignmentList } from "./pages/AssignmentList/AssignmentList";
 import { ClassList } from "./pages/ClassList";
 import { Class } from "./pages/Class";
 import { Submission } from "./pages/Submission";

@@ -4,3 +4,7 @@
     flex-direction: column;
     align-items: center;
 }
+
+.container h1{
+    text-align: center;
+}

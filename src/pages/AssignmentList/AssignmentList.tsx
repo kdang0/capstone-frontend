@@ -1,8 +1,9 @@
 import {useState, useEffect} from 'react';
 import axios from 'axios';
-import { useAuth } from '../hooks/useAuth';
-import AssignmentCard from  '../components/AssignmentCard/AssignmentCard';
+import { useAuth } from '../../hooks/useAuth';
+import AssignmentCard from  '../../components/AssignmentCard/AssignmentCard';
 import { Link } from 'react-router-dom';
+import styles from './AssignmentList.module.css';
 
 axios.defaults.withCredentials = true;
 interface Assignment{
@@ -40,7 +41,7 @@ export const AssignmentList = () => {
       {
         user && user.role == 'tutor' ? 
         <Link to='/assignment/create'>
-          <button>create assignment</button>
+          <button className={`${styles.button}`}>create assignment</button>
         </Link>
          :
         <></>

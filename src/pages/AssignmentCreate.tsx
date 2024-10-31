@@ -37,6 +37,8 @@ export const AssignmentCreate = () => {
   });
   const { user } = useAuth();
   const navigate = useNavigate();
+
+  //Generates list of classes to be on options
   useEffect(() => {
     async function fetchClasses() {
       if (user) {
@@ -54,6 +56,11 @@ export const AssignmentCreate = () => {
     fetchClasses();
   }, [user]);
 
+
+  /**
+   * Adds a question object with a unique generated ID
+   * Needs to be revised with REDUX this is too convoluted for no reason at all
+   */
   const addButton = () => {
     setAssignment((prevAssignment) => ({
       ...prevAssignment,
@@ -69,6 +76,13 @@ export const AssignmentCreate = () => {
     }));
   };
 
+  /**
+   * Creates the assignment upon submission
+   * Things to TODO:
+   * > Form validation
+   * > Error handling
+   * @param assignmentItem The assignment object you want to create
+   */
   const createAssignment = async (assignmentItem: Assignment) => {
     if (user) {
       await axios.post(
